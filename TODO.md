@@ -56,9 +56,11 @@ Podgląd zdjęć dla każdego przepisu w szczegółowym widoku przepisu.
 
 3. Modyfikacja komponentu `recipe-detail.component`
    * przejdź do widoku komponentu i dodaj na jako pierwszy element taga `<mat-card-content>`
-   > ` <div *ngIf="recipe.imageBase64" class="recipe-image">`
-   > `   <img [src]="recipe.imageBase64" alt="Zdjęcie przepisu" />`
-   > ` </div>`
+   > ` @if (recipe.imageBase64) {`
+   > `    <div class="recipe-image">`
+   > `      <img [src]="recipe.imageBase64" alt="Zdjęcie przepisu" />`
+   > `    </div>`
+   > ` }`
 
    * następnie przejdź do pliku ze stylami i dodaj
    > `.recipe-image {`
@@ -77,9 +79,11 @@ Podgląd zdjęć dla każdego przepisu w szczegółowym widoku przepisu.
 
 4. Modyfikacja komponentu `recipe-list.component`
    * przejdź do widoku komponentu i dodaj jako pierwszy element taga `<mat-card-content>`
-   > `<div *ngIf="recipe.imageBase64" class="recipe-image">`
-   > `  <img [src]="recipe.imageBase64" alt="Zdjęcie przepisu" />`
-   > `</div>`
+   > `@if (recipe.imageBase64) {`
+   > `   <div class="recipe-image">`
+   > `     <img [src]="recipe.imageBase64" alt="Zdjęcie przepisu" />`
+   > `   </div>`
+   > `}`
 
    * następnie przejdź do pliku ze stylami i dodaj
    > `.recipe-image {`
