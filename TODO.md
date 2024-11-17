@@ -57,7 +57,7 @@ Wyszukiwanie przepisów na podstawie nazwy.
    **(selectionChange)="filterRecipes()"** wywołuje funkcję `filterRecipes()`, gdy użytkownik zmieni poziom trudności, dzięki czemu lista przepisów zostanie automatycznie przefiltrowana.
 
 
-   * Znajdź pętlę `*ngFor="let recipe of recipes"` i zmień ją na: `*ngFor="let recipe of filteredRecipes"`
+   * Znajdź blok `@for (recipe of recipes; track recipe)` i zmień go na: `@for (recipe of filteredRecipes; track recipe)`
    * na koniec dorzuć drobne style do pliku `recipe-list.component.scss`
    > ` mat-form-field {`
    > `  width: 100%;`
