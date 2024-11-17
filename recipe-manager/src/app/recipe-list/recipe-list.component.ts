@@ -1,10 +1,10 @@
-import { NgFor } from '@angular/common';
+
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
