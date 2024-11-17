@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +12,7 @@ import { IngredientPipe } from '@core/recipe/pipes/ingredient.pipe';
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatCardModule, MatButtonModule, PreparationTimePipe, DifficultyPipe, IngredientPipe],
+  imports: [RouterLink, MatCardModule, MatButtonModule, PreparationTimePipe, DifficultyPipe, IngredientPipe],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.scss'
 })

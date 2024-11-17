@@ -1,18 +1,22 @@
 <section class="container">
-    <nav>
-        <span><strong>Recipe Manager</strong></span>
-        <ul>
-            <!-- dyrektywa Angulara, która ustawia trasę na odpowiedni widok. -->
-            <li><a routerLink="/recipes">Lista Przepisów</a></li>
-            <li><a routerLink="/recipe/add">Dodaj Nowy Przepis</a></li>
-        </ul>
-    </nav>
-    <main>
-        <!-- miejsce w szablonie, gdzie Angular Router ładuje komponenty zależnie od bieżącej ścieżki. -->
-        <router-outlet *ngIf="!isLoading"></router-outlet>
-        <mat-spinner *ngIf="isLoading"></mat-spinner>
-    </main>
-    <footer>
-        &reg;Angular - poziom podstawowy
-    </footer>
+  <nav>
+    <span><strong>Recipe Manager</strong></span>
+    <ul>
+      <!-- dyrektywa Angulara, która ustawia trasę na odpowiedni widok. -->
+      <li><a routerLink="/recipes">Lista Przepisów</a></li>
+      <li><a routerLink="/recipe/add">Dodaj Nowy Przepis</a></li>
+    </ul>
+  </nav>
+  <main>
+    <!-- miejsce w szablonie, gdzie Angular Router ładuje komponenty zależnie od bieżącej ścieżki. -->
+    @if (!isLoading) {
+      <router-outlet></router-outlet>
+    }
+    @if (isLoading) {
+      <mat-spinner></mat-spinner>
+    }
+  </main>
+  <footer>
+    &reg;Angular - poziom podstawowy
+  </footer>
 </section>
