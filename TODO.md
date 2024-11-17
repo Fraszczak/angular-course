@@ -32,7 +32,7 @@ Otwórz plik `src/app/recipe-detail/recipe-detail.component.ts`. W kodzie kompon
 
 5. Aktualizacja widoku `RecipeDetailComponent`
   * Otwórz plik `src/app/recipe-detail/recipe-detail.component.html` i podmień kod na ten z pliku `template-code.html`, który wyświetli szczegóły przepisu. (krok 5)
-  **Wyjaśnienie:** Używamy dyrektywy `*ngIf`, aby pokazać szczegóły przepisu, jeśli został wybrany. Jeśli nie, wyświetlamy komunikat z prośbą o wybór przepisu.
+  **Wyjaśnienie:** Używamy bloku `@If`, aby pokazać szczegóły przepisu, jeśli został wybrany. Jeśli nie, wyświetlamy komunikat z prośbą o wybór przepisu.
 
   * Otwórz plik `src/app/recipe-detail/recipe-detail.component.scss` i dodaj style z pliku `component-style.scss`
 

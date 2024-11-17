@@ -1,14 +1,18 @@
 <!-- ######################### recipe-detail.component.html - krok 5 ######################### -->
 
 <section class="container">
-    <div *ngIf="!selectedRecipe">
+    @if (!selectedRecipe) {
+    <div>
         <p>Wybierz przepis z listy, aby zobaczyć szczegóły.</p>
     </div>
+    }
 
-    <div *ngIf="selectedRecipe" class="container--selected">
+    @if (selectedRecipe) {
+    <div class="container--selected">
         <h2>{{ selectedRecipe.title }}</h2>
         <p>{{ selectedRecipe.description }}</p>
     </div>
+    }
 </section>
 
 <!-- ######################### ######################### -->
@@ -17,10 +21,12 @@
 
 <h2 class="header">Lista Przepisów</h2>
 <ul>
-    <li *ngFor="let recipe of recipes" (click)="onRecipeClick(recipe)">
+    @for (recipe of recipes; track recipe) {
+    <li (click)="onRecipeClick(recipe)">
         <h3>{{ recipe.title }}</h3>
         <p>{{ recipe.description }}</p>
     </li>
+    }
 </ul>
 
 <!-- ######################### ######################### -->
