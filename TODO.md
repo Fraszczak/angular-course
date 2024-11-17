@@ -85,26 +85,20 @@ Więcej o standalone komponentach powiemy sobie w dalszej części materiału.
    * Otwórz plik `src/app/recipe-list/recipe-list.component.html` a następnie, dodaj kod HTML do wyświetlania listy przepisów:
       * W znaczniku `<h2>` zawrzyj tekst `"Lista Przepisów"`
       * Użyj znaczników `<ul>` oraz `<li>` do wyświetlenia listy.
-      * Przeiteruj się po tablicy za pomocą dyrektywy `*ngFor`
+      * Przeiteruj się po tablicy za pomocą bloku `@for`
       * Za pomocą znacznika `<h3>` wyświetl tytuł a za pomocą znacznika `<p>` wyświetl opis produktu.
         > `<h2>Lista Przepisów</h2>`
         > `<ul>`
-        > `  <li *ngFor="let recipe of recipes">`
-        > `    <h3>{{ recipe.title }}</h3>`
-        > `    <p>{{ recipe.description }}</p>`
-        > `  </li>`
+        > `  @for (recipe of recipes; track recipe) {`
+        > `    <li>`
+        > `      <h3>{{ recipe.title }}</h3>`
+        > `      <p>{{ recipe.description }}</p>`
+        > `    </li>`
+        > `  }`
         > `</ul>`
 
-        **Wyjaśnienie**: Użyliśmy dyrektywy *ngFor, która iteruje po tablicy recipes i generuje elementy listy na podstawie danych. W Angularze {{ recipe.title }} i {{ recipe.description }} to przykład tzw. interpolacji.
+        **Wyjaśnienie**: Użyliśmy bloku @for, który iteruje po tablicy recipes i generuje elementy listy na podstawie danych. W Angularze {{ recipe.title }} i {{ recipe.description }} to przykład tzw. interpolacji.
         
-      * By iteracja po tablicy była możliwa musisz zaimportować dyrektywę ngFor. Przejdź do `src/app/recipe-list/recipe-list.component.ts` i dodaj do listy importów `ngFor`
-        > `@Component({`
-        > `  selector: 'app-recipe-list',`
-        > `  standalone: true,`
-        > `  imports: [NgFor],`
-        > `  templateUrl: './recipe-list.component.html',`
-        > `  styleUrl: './recipe-list.component.scss'`
-        > `})`
   * Otwórz plik `src/app/app.component.ts` a następnie: 
     * zaimporuj stworzony komponent poprzez dodanie `RecipeListComponent` do listy importów.
   * Teraz otwórz plik `src/app/app.component.html`, a następnie:
