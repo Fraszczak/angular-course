@@ -22,9 +22,11 @@ Zbudujemy formularz umożliwiający dodawanie i edytowanie przepisów kulinarnyc
         `    this.showForm = !this.showForm;`
         `}`
     * Przejdźmy do `recipe-template-form.component.html`, Dodajmy tam początkową formę kodu widoku naszego komponentu
-        `<div *ngIf="showForm">`
-        `<h2>Dodaj nowy przepis</h2>`
-        `</div>`
+        > `@if (showForm) {`
+        > ` <div>`
+        > `     <h2>Dodaj nowy przepis</h2>`
+        > ` </div>`
+        > `}`
 
 3. Przejdzmy do komponentu głownego `app.component` i dodajmy nasz nowo utworzony komponent.
     * Zaimportujmy `RecipeTemplateFormComponent`
@@ -73,9 +75,11 @@ Zadanie do wykonania
         > `        this.showForm = !this.showForm;`
         > `    }`
     * Przejdźmy do `recipe-reactive-form.component.html`, Dodajmy tam początkową formę kodu widoku naszego komponentu
-        > `<div *ngIf="showForm">`
-        > `<h2>Dodaj nowy przepis</h2>`
-        > `</div>`
+        > ` @if (showForm) {`
+        > ` <div>`
+        > `     <h2>Dodaj nowy przepis</h2>`
+        > ` </div>`
+        > `}`
 
 3. Logikę odpowiedzialną za wyświetlenie oraz ukrycie już mamy.
 Przejdźmy do `app.component.html` i podmieńmy tagi komponentów by zacząć używać `<app-recipe-reactive-form #recipeReactiveForm></app-recipe-reactive-form>`
@@ -97,6 +101,7 @@ Zadanie do wykonania
 **CZĘŚĆ Angular Material**
 
 1. Instalacja Angular Material, Angular CDK oraz Angular Animations
+    * Jeżeli masz bieżące nie "zakomitowane" zmiany, musisz je "zakomitować" teraz.
     * W terminalu przejdź do lokalizacji swojego projektu i uruchom polecenie: `ng add @angular/material`
     > Konfiguracja stylów Angular Material:
     > Po wykonaniu powyższego polecenia, Angular Material poprosi o wybór opcji, które zainstalują style, czcionki i animacje dla projektu:
@@ -114,10 +119,9 @@ Zadanie do wykonania
    * Przejdźmy teraz do obecnie używanego komponentu dodawania i edytowania przepisów `app-recipe-reactive-form.component.ts` i dodajmy do listy importów `MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule`
    * Gdy już importy mamy ograne, czas na edycje widoku. Przejdź do `template-code.html` znajdź tam część dotyczącą Angular Material, krok drugi i skopiuj kod a następnie podmień na ten znajdujący się w `app-recipe-reactive-form.component.ts`
    * Dorzućmy style z `component.style.scss` do `app-recipe-reactive-form.component.scss` by trochę wyrównać nasze kontenery na kontrolki jak i sam formularz
-   Gdybyś się zastanawiał co to jest @if, @for to są to alternatywy dla dyrektyw *ngIf *ngFor pochodzące z nowego "control flow" - dopytaj trenera
 
 Zadanie do wykonania
-  * Kontrolka składników jest obsługiwana przez texarea, fajnie byłoby gdyby urzytkownik nie musiał wpisywać ich z palca a mógł wybrać z listy wielokrotnego wyboru. Zaimplementuj to w oparciu o `https://material.angular.io/components/select/overview#multiple-selection`
+  * Kontrolka składników jest obsługiwana przez texarea, fajnie byłoby gdyby użytkownik nie musiał wpisywać ich z palca a mógł wybrać z listy wielokrotnego wyboru. Zaimplementuj to w oparciu o `https://material.angular.io/components/select/overview#multiple-selection`
   Dorzućmy też wyświetlanie składników po wyborze przepisu.
   Podpowiedź: Potrzebna będzie lista składników by móc po niej iterować, przykładową znajdziesz w `component-code.ts`
 

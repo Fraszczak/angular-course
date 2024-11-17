@@ -2,7 +2,8 @@
 
 <!-- ############ recipe-template-form.component.html - krok 4 ############ -->
 
-<div *ngIf="showForm">
+@if (showForm) {
+<div>
     <!-- Nagłówek który wykorzystuje Conditional (ternary) operator do wyświetlania odpowiedniego tekstu-->
     <h2>{{ isEditMode ? 'Edytuj przepis' : 'Dodaj nowy przepis' }}</h2>
 
@@ -20,14 +21,18 @@
             <input type="text" name="title" ngModel required
                 minlength="3" #title="ngModel" />
             <!-- Poniższy kontener to ta treść którą zobaczymy gdy kontrolka będzie błędna oraz już dotknięta przez użytkownika -->
-            <div *ngIf="title.invalid && title.touched">
+            @if (title.invalid && title.touched) {
+            <div>
                 <!-- Tę treść zobaczymy gdy użytkownik dotknie kontrolki ale nie wprowadzi żadnych danych, lub gdy usunie wszystko co zawierała kontrolka i zostawi puste - wymagane (required) -->
-                <small *ngIf="title.errors?.required">Tytuł jest
-                    wymagany</small>
+                @if (title.errors?.required) {
+                <small>Tytuł jest wymagany</small>
+                }
                 <!-- Tę treść zobaczymy gdy użytkonik wprowadzi tekst ktrótszy niż wymagany (3 znaki) -->
-                <small *ngIf="title.errors?.minlength">Tytuł musi mieć co
-                    najmniej 3 znaki</small>
+                @if (title.errors?.minlength) {
+                <small>Tytuł musi mieć co najmniej 3 znaki</small>
+                }
             </div>
+            }
         </div>
 
         <!-- Opis -->
@@ -41,10 +46,11 @@
             <label for="ingredients">Składniki (minimum 2):</label>
             <input type="text" name="ingredients" ngModel
                 required #ingredients="ngModel" />
-            <div *ngIf="ingredients.invalid && ingredients.touched">
-                <small *ngIf="ingredients.errors?.required">Składniki są
-                    wymagane</small>
-            </div>
+            @if (ingredients.invalid && ingredients.touched) {
+            @if (ingredients.errors?.required) {
+            <small>Składniki są wymagane</small>
+            }
+            }
         </div>
 
         <!-- Przycisk wysyłający -->
@@ -53,6 +59,8 @@
         </button>
     </form>
 </div>
+}
+
 <!-- ############ ############ -->
 <!-- ######################## ######################## -->
 
@@ -60,7 +68,8 @@
 
 <!-- ############ recipe-reactive-form.component.html - krok 4 ############ -->
 
-<div *ngIf="showForm">
+@if (showForm) {
+<div>
     <h2>{{ isEditMode ? 'Edytuj przepis' : 'Dodaj nowy przepis' }}</h2>
 
     <form [formGroup]="recipeFormGroup" (ngSubmit)="onSubmit()" novalidate>
@@ -68,27 +77,27 @@
         <div>
             <label for="title">Tytuł przepisu:</label>
             <input type="text" formControlName="title" />
-            <div
-                *ngIf="recipeFormGroup.get('title')?.invalid && recipeFormGroup.get('title')?.touched">
-                <small
-                    *ngIf="recipeFormGroup.get('title')?.errors?.required">Tytuł
-                    jest wymagany</small>
-                <small
-                    *ngIf="recipeFormGroup.get('title')?.errors?.minlength">Tytuł
-                    musi mieć co najmniej 3 znaki</small>
-            </div>
+            @if (recipeFormGroup.get('title')?.invalid &&
+            recipeFormGroup.get('title')?.touched) {
+            @if (recipeFormGroup.get('title')?.errors?.required) {
+            <small>Tytuł jest wymagany</small>
+            }
+            @if (recipeFormGroup.get('title')?.errors?.minlength) {
+            <small>Tytuł musi mieć co najmniej 3 znaki</small>
+            }
+            }
         </div>
 
         <!-- Składniki -->
         <div>
             <label for="ingredients">Składniki (minimum 2):</label>
             <input type="text" formControlName="ingredients" />
-            <div
-                *ngIf="recipeFormGroup.get('ingredients')?.invalid && recipeFormGroup.get('ingredients')?.touched">
-                <small
-                    *ngIf="recipeFormGroup.get('ingredients')?.errors?.required">Składniki
-                    są wymagane</small>
-            </div>
+            @if (recipeFormGroup.get('ingredients')?.invalid &&
+            recipeFormGroup.get('ingredients')?.touched) {
+            @if (recipeFormGroup.get('ingredients')?.errors?.required) {
+            <small>Składniki są wymagane</small>
+            }
+            }
         </div>
 
         <button type="submit" [disabled]="recipeFormGroup.invalid">
@@ -96,6 +105,7 @@
         </button>
     </form>
 </div>
+}
 
 <!-- ############ ############ -->
 <!-- ######################## ######################## -->
@@ -104,7 +114,8 @@
 
 <!-- ############ recipe-reactive-form.component.html - krok 2 ############ -->
 
-<div *ngIf="showForm">
+@if (showForm) {
+<div>
     <h2>{{ isEditMode ? 'Edytuj przepis' : 'Dodaj nowy przepis' }}</h2>
 
     <form [formGroup]="recipeFormGroup" (ngSubmit)="onSubmit()"
@@ -114,12 +125,13 @@
             <mat-form-field class="form-control-full-width">
                 <mat-label>Tytuł przepisu</mat-label>
                 <input matInput type="text" formControlName="title" />
-                <mat-error
-                    *ngIf="recipeFormGroup.get('title')?.hasError('required')">
+                @if (recipeFormGroup.get('title')?.hasError('required'))
+                <mat-error>
                     Tytuł jest wymagany
                 </mat-error>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('title')?.hasError('minlength')">
+                }
+                @if (recipeFormGroup.get('title')?.hasError('minlength'))
+                <mat-error>
                     Tytuł musi mieć co najmniej 3 znaki
                 </mat-error>
             </mat-form-field>
@@ -135,10 +147,11 @@
                     cdkAutosizeMinRows="1"
                     cdkAutosizeMaxRows="5" type="text"
                     formControlName="description"></textarea>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('description')?.errors?.required">Składniki
+                @if (recipeFormGroup.get('description')?.errors?.required) {
+                <mat-error>Składniki
                     są wymagane
                 </mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -152,10 +165,11 @@
                     cdkAutosizeMinRows="1"
                     cdkAutosizeMaxRows="5" type="text"
                     formControlName="ingredients"></textarea>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('ingredients')?.errors?.required">Składniki
-                    są wymagane
+                @if (recipeFormGroup.get('ingredients')?.errors?.required) {
+                <mat-error>
+                    Składniki są wymagane
                 </mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -177,10 +191,11 @@
                 <mat-label>Czas wykonania (w minutach):</mat-label>
                 <input matInput type="text"
                     formControlName="preparationTime" />
-                <mat-error
-                    *ngIf="recipeFormGroup.get('preparationTime')?.errors?.required">Czas
-                    wykonania jest wymagany
+                @if (recipeFormGroup.get('preparationTime')?.errors?.required) {
+                <mat-error>
+                    Czas wykonania jest wymagany
                 </mat-error>
+                }
             </mat-form-field>
         </div>
 
@@ -190,6 +205,7 @@
         </button>
     </form>
 </div>
+}
 
 <!-- ######################## ######################## -->
 <!-- ############ ############ -->
