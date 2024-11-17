@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RecipeModel } from '../../core/recipe/model';
@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-recipe-reactive-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
   templateUrl: './recipe-reactive-form.component.html',
   styleUrl: './recipe-reactive-form.component.scss'
 })

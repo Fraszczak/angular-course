@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RecipeModel } from '../../core/recipe/model';
@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-recipe-template-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
   templateUrl: './recipe-template-form.component.html',
   styleUrl: './recipe-template-form.component.scss'
 })

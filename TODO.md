@@ -19,11 +19,6 @@ _W ramach tego modułu dowiemy się, jak ustawić routing dla listy przepisów, 
    Widok edycji i szczegółów przepisu powinna zawierać parametr **id** by móc określić o jaki przepis chodzi.
    Kod znajdziesz w `component-code.ts` - krok 1.
 
-
-   brakuje importu - pułapka?
-
-
-
 2. Tworzenie Linków do Nawigacji Między Widokami
    Teraz utworzymy header naszej aplikacji a w nim menu z linkami, które umożliwią użytkownikowi nawigację po aplikacji.
 
@@ -35,13 +30,13 @@ _W ramach tego modułu dowiemy się, jak ustawić routing dla listy przepisów, 
         > `  this.selectedRecipe = recipe;`
         > `}`
     * Przejdź teraz do `app.component.scss` i podmień zawartość na style z pliku `component-style.scss` krok 2.
-    * Pozbądź się też zaimportowanych, nie używanych zależności z listy imports oraz dodaj `RouterOutlet`
+    * Pozbądź się też zaimportowanych, nie używanych zależności z listy imports oraz dodaj `RouterOutlet, RouterLink`
 
 
 **Tworzenie Widoków dla Każdej Ścieżki**
 Teraz utworzymy widoki, które użytkownik zobaczy korzystająć z nawigacji po aplikacji
 
-1. Widok Listy Przepisów (RecipeListComponent)
+3. Widok Listy Przepisów (RecipeListComponent)
   * Otwórz `recipe-list.component.html` i upewnij się, że każdy przepis ma link, który prowadzi do widoku szczegółowego.
     * Dodajmy przycisk "Zobacz szczegóły".
       Kod znajdziesz w pliku `template-code.html` - krok 3.
@@ -51,7 +46,7 @@ Teraz utworzymy widoki, które użytkownik zobaczy korzystająć z nawigacji po 
   * Przejdź do `recipe-list.component.scss`, a następnie:
     * dodaj style z pliku `component-style.scss` - krok 3
 
-2. Widok Szczegółów Przepisu (RecipeDetailComponent)
+4. Widok Szczegółów Przepisu (RecipeDetailComponent)
    * Przejdź do `recipe-details-component.ts`, gdzie musimy:
     * zadbać by ten komponent sam zdobył sobie przepis. 
         Podanie go przez Input'a już nie wchodzi w grę.
@@ -99,11 +94,62 @@ Teraz utworzymy widoki, które użytkownik zobaczy korzystająć z nawigacji po 
 
 
 
-6. Możesz się zastanawiać co gdy widoki są bardziej skomplikowane, może potrzebują dodatkowych danych co spowodowałoby opóźnienie w wyświetleniu strony. W takiej sytuacji warto mieć komponent który wyświetli w tym czasie loader.
-  * ...
+6. Możesz się zastanawiać co gdy widoki są bardziej skomplikowane - potrzebują dodatkowych danych co spowoduje opóźnienie w wyświetleniu strony.
+   W takiej sytuacji warto wyświetlić loader (spinner) by użytkownik Naszej aplikacji wiedział, że coś się dzieje. Dodajmy go zatem - użyjemy gotowego komponentu pochodzącego z dodanej przez Nas wcześniej biblioteki komponentów Angular Material (https://material.angular.io/components/progress-spinner/overview)
+  * Przejdźmy do `app.component.ts` i zaimportujmy `MatProgressSpinnerModule`
+  * Następnie przejdźmy do `app.component.html` i dodajmy go w widoku pod `<router-outlet></router-outlet>`
+  * Fajnie żeby był na środku strony i trochę odsunięty od headera. Dodajmy potrzebne style.
+    > `mat-spinner {`
+    > `place-self: center;`
+    > `margin-top: 10rem;`
+    > `}`
+  * Teraz zostaje nam już tylko logika która wyświetli spinner w odpowiednim momencie jak również go ukryje.
+    Tu do gry wchodzą eventy pochodzące z routera, które powiedzą nam w jakim stanie jest router naszej aplikacji.
+      * Przejdźmy do `app.component.ts`
+      * Dodaj konstruktor i wstrzyknij `Router`.
+      * Dodaj zmienną `isLoading: boolean = false`
+      * Następnie do ciała konstruktora dodaj
+        > `constructor(private router: Router) {`
+        > `  this.router.events.subscribe(e => { // subskrybujemy się do strumienia events`
+        > `    if (e instanceof NavigationStart) { // sprawdzamy instancje`
+        > `      this.isLoading = true // gdy nawigacja startuje chcemy widzieć loader`
+        > `    }`
+        > `    if (e instanceof NavigationEnd) {`
+        > `      this.isLoading = false // w każdym innym przypadku chcemy go wyłączyć`
+        > `    }`
+        > `    if (e instanceof NavigationCancel) {`
+        > `      this.isLoading = false`
+        > `    }`
+        > `    if (e instanceof NavigationError) {`
+        > `      this.isLoading = false`
+        > `    }`
+        > `  })`
+        > `}`
+      * Dorzuć blok `@if` do widoku naszego spinnera oraz do naszego `router-outlet`, powinieneś mieć
+        > `@if (!isLoading) {`
+        > `  <router-outlet></router-outlet>`
+        > `}`
+        > `@if (isLoading) {`
+        > `  <mat-spinner></mat-spinner>`
+        > `}`
 
-7. Lazy loading widoków
-  * ...
+**Zagadka**
+   Czy domyślasz się dlaczego umieszczamy spinner w tym a nie w innym miejscu?
+
+
+
+  * Gdy wszystko już niemal gotowe - przydałoby się coś co opóźni wyświetlanie którejś ze stron by sprawdzić czy spinner zadziała. Użyjmy `Resolver` a w nim dodamy timmer który opóźni wyświetlenie strony. Zaimplementujmy go więc.
+    * Przejdźmy do terminala, będąc w projekcie wpisz `ng generate resolver core/recipe/resolvers/recipe-page`
+      Guardy można obsłużyć funkcyjnie, można też poprzez serwis.
+    * Przejdźmy do naszego nowo utworzonego resolvera `recipe-page.resolver.ts`
+    * linijkę z return'em zamień na
+    >  `return of(null).pipe( // of() tworzy strumień`
+    >  `  debounceTime(5000), // opóźni zwrotkę o 5 sekund`
+    >  `  map(() => true) // zmapuje zwrotkę do wartości true`
+    >  `);`
+    * Dodaj potrzebne importy. O strumieniach porozmawiamy sobie później, na razie nie przejmuj się, jeżeli nie rozumiesz kodu.
+    * Przejdźmy teraz do `app.routes.ts` i dodajmy nasz resolver do routa który obsługuje dodanie nowego przepisu
+      > `{ path: 'recipe/add', component: RecipeReactiveFormComponent, resolve: { recipePageResolver } },`
 
 ##### Podsumowanie Modułu:
 W tym module:
@@ -113,3 +159,4 @@ Mieliśmy okazję poznać czym jest Angular Router oraz podstawowe zasady dział
 * Dodaliśmy logikę umożliwiającą dynamiczne zarządzanie listą składników.
 * Stworzyliśmy przyjazny dla użytkownika widok formularza z intuicyjną walidacją pól.
 * Użyliśmy Angular Material do stylizacji formularzy, co wzmacnia spójność i wygląd aplikacji.
+* W oparciu o Event'y Router'a dodaliśmy spinner oraz logikę decydującą o momencie jego wyświetlenia
