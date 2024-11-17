@@ -23,7 +23,8 @@
 <!-- ######################### recipe-list.component.html - krok 3 ######################### -->
 
 <div class="container">
-    <mat-card class="recipe-card" *ngFor="let recipe of recipes">
+    @for (recipe of recipes; track recipe) {
+    <mat-card class="recipe-card">
         <mat-card-title>{{ recipe.title }}</mat-card-title>
         <mat-card-content>
             <p><strong>Składniki:</strong>{{ recipe.ingredients.join(', ')
@@ -39,13 +40,15 @@
                 (click)="onDeleteRecipe(recipe?.id)">Usuń</button>
         </mat-card-actions>
     </mat-card>
+    }
 </div>
 
 <!-- ######################### ######################### -->
 
 <!-- ######################### recipe-details-component.html - krok 4 ######################### -->
 
-<mat-card *ngIf="recipe">
+@if (recipe) {
+<mat-card>
     <mat-card-title>{{ recipe.title }}</mat-card-title>
     <mat-card-content>
         <p><strong>Składniki:</strong> {{ recipe.ingredients.join(', ')
@@ -59,6 +62,7 @@
             listy</button>
     </mat-card-actions>
 </mat-card>
+}
 
 <!-- ######################### ######################### -->
 
@@ -72,14 +76,16 @@
         <mat-form-field class="form-control-full-width">
             <mat-label>Tytuł przepisu</mat-label>
             <input matInput type="text" formControlName="title" />
-            <mat-error
-                *ngIf="recipeFormGroup.get('title')?.hasError('required')">
+            @if (recipeFormGroup.get('title')?.hasError('required')) {
+            <mat-error>
                 Tytuł jest wymagany
             </mat-error>
-            <mat-error
-                *ngIf="recipeFormGroup.get('title')?.hasError('minlength')">
+            }
+            @if (recipeFormGroup.get('title')?.hasError('minlength')) {
+            <mat-error>
                 Tytuł musi mieć co najmniej 3 znaki
             </mat-error>
+            }
         </mat-form-field>
 
         <!-- Opis przepisu -->
@@ -91,14 +97,15 @@
                 cdkAutosizeMinRows="1"
                 cdkAutosizeMaxRows="5" type="text"
                 formControlName="description"></textarea>
-            <mat-error
-                *ngIf="recipeFormGroup.get('description')?.errors?.required">Składniki
-                są wymagane
+            @if (recipeFormGroup.get('description')?.errors?.required) {
+            <mat-error>
+                Składniki są wymagane
             </mat-error>
+            }
         </mat-form-field>
 
         <!-- Składniki -->
-        <mat-form-field class="form-control-full-width">
+        <mat-form-field>
             <mat-label>Składniki (minimum 2):</mat-label>
             <mat-select
                 formControlName="ingredients" multiple>
@@ -107,10 +114,11 @@
                 <mat-option
                     [value]="popularIngredient">{{popularIngredient}}</mat-option>
                 }</mat-select>
-            <mat-error
-                *ngIf="recipeFormGroup.get('ingredients')?.errors?.required">Składniki
+            @if (recipeFormGroup.get('ingredients')?.errors?.required) {
+            <mat-error>Składniki
                 są wymagane
             </mat-error>
+            }
         </mat-form-field>
 
         <!-- Poziom trudności -->
@@ -124,14 +132,15 @@
         </mat-form-field>
 
         <!-- Czas przygotowania -->
-        <mat-form-field class="form-control-full-width">
+        <mat-form-field>
             <mat-label>Czas wykonania (w minutach):</mat-label>
             <input matInput type="text"
                 formControlName="preparationTime" />
-            <mat-error
-                *ngIf="recipeFormGroup.get('preparationTime')?.errors?.required">Czas
+            @if (recipeFormGroup.get('preparationTime')?.errors?.required) {
+            <mat-error>Czas
                 wykonania jest wymagany
             </mat-error>
+            }
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit"

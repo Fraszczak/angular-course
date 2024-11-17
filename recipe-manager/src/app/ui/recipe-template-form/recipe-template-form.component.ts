@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RecipeModel } from '../../core/recipe/model';
@@ -13,7 +13,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-recipe-template-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
+  imports: [FormsModule, RouterLink, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule],
   templateUrl: './recipe-template-form.component.html',
   styleUrl: './recipe-template-form.component.scss'
 })

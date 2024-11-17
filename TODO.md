@@ -125,10 +125,13 @@ Teraz utworzymy widoki, które użytkownik zobaczy korzystająć z nawigacji po 
         > `    }`
         > `  })`
         > `}`
-      * Dorzuć dyrektywę `*ngIf` do widoku Naszego spinnera oraz do naszego `router-outlet`, powinieneś mieć
-        > `<router-outlet *ngIf="!isLoading"></router-outlet>`
-        > `<mat-spinner *ngIf="isLoading"></mat-spinner>`
-      * Nie zapomnij o imporcie dyrektywy do komponentu.
+      * Dorzuć blok `@if` do widoku naszego spinnera oraz do naszego `router-outlet`, powinieneś mieć
+        > `@if (!isLoading) {`
+        > `  <router-outlet></router-outlet>`
+        > `}`
+        > `@if (isLoading) {`
+        > `  <mat-spinner></mat-spinner>`
+        > `}`
 
 **Zagadka**
    Czy domyślasz się dlaczego umieszczamy spinner w tym a nie w innym miejscu?
