@@ -1,87 +1,93 @@
-<div *ngIf="showForm">
+@if (showForm) {
+  <div>
     <h2>{{ isEditMode ? 'Edytuj przepis' : 'Dodaj nowy przepis' }}</h2>
-
     <form [formGroup]="recipeFormGroup" (ngSubmit)="onSubmit()"
-        class="reactive-form" novalidate>
-        <!-- Tytuł -->
-        <div>
-            <mat-form-field class="form-control-full-width">
-                <mat-label>Tytuł przepisu</mat-label>
-                <input matInput type="text" formControlName="title" />
-                <mat-error
-                    *ngIf="recipeFormGroup.get('title')?.hasError('required')">
-                    Tytuł jest wymagany
-                </mat-error>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('title')?.hasError('minlength')">
-                    Tytuł musi mieć co najmniej 3 znaki
-                </mat-error>
-            </mat-form-field>
+      class="reactive-form" novalidate>
+      <!-- Tytuł -->
+      <div>
+        <mat-form-field class="form-control-full-width">
+          <mat-label>Tytuł przepisu</mat-label>
+          <input matInput type="text" formControlName="title" />
+          @if (recipeFormGroup.get('title')?.hasError('required')) {
+            <mat-error
+              >
+              Tytuł jest wymagany
+            </mat-error>
+          }
+          @if (recipeFormGroup.get('title')?.hasError('minlength')) {
+            <mat-error
+              >
+              Tytuł musi mieć co najmniej 3 znaki
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <!-- Opis -->
+      <div>
+        <mat-form-field class="form-control-full-width">
+          <mat-label>Opis: </mat-label>
+          <textarea matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" type="text"
+          formControlName="description"></textarea>
+          @if (recipeFormGroup.get('description')?.errors?.required) {
+            <mat-error
+              >Składniki
+              są wymagane
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <!-- Składniki -->
+      <div>
+        <mat-form-field class="form-control-full-width">
+          <mat-label>Składniki (minimum 2):</mat-label>
+          <mat-select
+            formControlName="ingredients" multiple>
+            @for (popularIngredient of popularIngredients; track
+              popularIngredient) {
+              <mat-option
+              [value]="popularIngredient">{{popularIngredient}}</mat-option>
+            }</mat-select>
+            @if (recipeFormGroup.get('ingredients')?.errors?.required) {
+              <mat-error
+                >Składniki
+                są wymagane
+              </mat-error>
+            }
+          </mat-form-field>
         </div>
-
-        <!-- Opis -->
-        <div>
-            <mat-form-field class="form-control-full-width">
-                <mat-label>Opis: </mat-label>
-                <textarea matInput
-                    cdkTextareaAutosize
-                    #autosize="cdkTextareaAutosize"
-                    cdkAutosizeMinRows="1"
-                    cdkAutosizeMaxRows="5" type="text"
-                    formControlName="description"></textarea>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('description')?.errors?.required">Składniki
-                    są wymagane
-                </mat-error>
-            </mat-form-field>
-        </div>
-
-        <!-- Składniki -->
-        <div>
-            <mat-form-field class="form-control-full-width">
-                <mat-label>Składniki (minimum 2):</mat-label>
-                <mat-select
-                    formControlName="ingredients" multiple>
-                    @for (popularIngredient of popularIngredients; track
-                    popularIngredient) {
-                    <mat-option
-                        [value]="popularIngredient">{{popularIngredient}}</mat-option>
-                    }</mat-select>
-                <mat-error
-                    *ngIf="recipeFormGroup.get('ingredients')?.errors?.required">Składniki
-                    są wymagane
-                </mat-error>
-            </mat-form-field>
-        </div>
-
         <!-- Poziom trudności -->
         <div>
-            <mat-form-field class="form-control-full-width">
-                <mat-label>Poziom trudności wykonania :</mat-label>
-                <select matNativeControl required formControlName="difficulty">
-                    <option value="hard">hard</option>
-                    <option value="medium">medium</option>
-                    <option value="easy">easy</option>
-                </select>
-            </mat-form-field>
+          <mat-form-field class="form-control-full-width">
+            <mat-label>Poziom trudności wykonania :</mat-label>
+            <select matNativeControl required formControlName="difficulty">
+              <option value="hard">hard</option>
+              <option value="medium">medium</option>
+              <option value="easy">easy</option>
+            </select>
+          </mat-form-field>
         </div>
-
         <!-- Czas przygotowania -->
         <div>
-            <mat-form-field class="form-control-full-width">
-                <mat-label>Czas wykonania (w minutach):</mat-label>
-                <input matInput type="text"
-                    formControlName="preparationTime" />
+          <mat-form-field class="form-control-full-width">
+            <mat-label>Czas wykonania (w minutach):</mat-label>
+            <input matInput type="text"
+              formControlName="preparationTime" />
+              @if (recipeFormGroup.get('preparationTime')?.errors?.required) {
                 <mat-error
-                    *ngIf="recipeFormGroup.get('preparationTime')?.errors?.required">Czas
-                    wykonania jest wymagany
+                  >Czas
+                  wykonania jest wymagany
                 </mat-error>
+              }
             </mat-form-field>
-        </div>
-
-        <button mat-raised-button color="primary" type="submit"
+          </div>
+          <button mat-raised-button color="primary" type="submit"
             [disabled]="recipeFormGroup.invalid">
             {{ isEditMode ? 'Zapisz zmiany' : 'Dodaj przepis' }}
-        </button>
-    </form>
-</div>
+          </button>
+        </form>
+      </div>
+    }
