@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -11,7 +11,7 @@ import { tap } from 'rxjs';
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [CommonModule, RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule],
+  imports: [RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })

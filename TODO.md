@@ -19,7 +19,7 @@ W tym module nauczymy się tworzyć własne dyrektywy i pipes. Naszym celem będ
    * przejdź do `recipe-list.component.ts` i dodaj do tablicy importów naszą nowo utworzną dyrektywę `HighlightOnHoverDirective`
    * przejdź do `recipe-list.component.html` i dodaj użycie dyrektywy. Docelowo chcemy by dyrektywa działała na hover elementu listy.
      Dodajmy więc selektor dyrektywy `appHighlightOnHover` do taga `<mat-card>` o tak:
-     > `<mat-card class="recipe-card" *ngFor="let recipe of recipes" appHighlightOnHover>`
+     > `<mat-card class="recipe-card"appHighlightOnHover>`
 
    * przejdźmy do konsoli w dev-tools przeglądarki - zobaczysz log'a którego wywołujemy z konstruktora dyrektywy.
 
@@ -58,7 +58,7 @@ W tym module nauczymy się tworzyć własne dyrektywy i pipes. Naszym celem będ
    * Zmień `hoverColor: string = 'dodgerblue';` na ` @Input() hoverColor: string = 'dodgerblue';`
       Teraz nasza zmienna to input do którego możemy podać kolor z zewnątrz dynamicznie.
    * Przejdź do `recipe-list.component.html` i po selektorze `appHighlightOnHover` dodaj `[hoverColor]="'#e0f7fa'"`
-   > `<mat-card class="recipe-card" *ngFor="let recipe of recipes" appHighlightOnHover [hoverColor]="'#e0f7fa'" >`
+   > `<mat-card class="recipe-card" appHighlightOnHover [hoverColor]="'#e0f7fa'" >`
 
 4. Rozszerzmy widok uzyskiwany po przejściu w szczegóły przepisu.
    * przjdź do `recipe-details.html`
@@ -91,7 +91,7 @@ W tym module nauczymy się tworzyć własne dyrektywy i pipes. Naszym celem będ
    * Gdy już to mamy, dodajmy użycie w template, przejdźmy do `recipe-detail.component.html` i edytujmy linijkę odpowiedzialną za wyświetlenie czasu przygotowania:
    > `<p><strong>Czas przygotowania:</strong> {{ recipe.preparationTime! | preparationTime }}</p>`
    dodajemy `!` na końcu parametru, mówiąc kompilatorowi że nie wpadnie tam null albo undefined.
-   Nie wpadnie, bo zadbaliśmy o to na górze dyrektywą *ngIf
+   Nie wpadnie, bo zadbaliśmy o to wkładając kod w blok @if
 
 6. Pipe `DifficultyPipe`
    * W terminalu, będąc w projekcie wpisz i wykonaj `ng generate pipe core/recipe/pipes/difficulty`
@@ -114,7 +114,7 @@ W tym module nauczymy się tworzyć własne dyrektywy i pipes. Naszym celem będ
    * Gdy już to mamy, dodajmy użycie w template, przejdźmy do `recipe-detail.component.html` i edytujmy linijkę odpowiedzialną za wyświetlenie czasu przygotowania:
    > `<p><strong>Trudność wykonania:</strong> {{ recipe.difficulty! | difficulty }}</p>`
    dodajemy `!` na końcu parametru, mówiąc kompilatorowi że nie wpadnie tam null albo undefined.
-   Nie wpadnie, bo zadbaliśmy o to na górze dyrektywą *ngIf
+   Nie wpadnie, bo zadbaliśmy o to wkładając kod w blok @if
 
    **Nie tak się podchodzi do tematu wielu języków w aplikacji. Jednak temat ten wybiega poza ten kurs, jeżeli jesteś ciekaw: https://v17.angular.io/guide/i18n-overview**
 
