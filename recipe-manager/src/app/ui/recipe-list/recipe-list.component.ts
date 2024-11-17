@@ -1,4 +1,4 @@
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeListElementComponent } from '../recipe-list-element/recipe-list-element.component';
 import { RecipeService } from '../../core/recipe/service/recipe.service';
