@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +15,7 @@ import { PreparationTimePipe } from '@core/recipe/pipes/preparation-time.pipe';
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [CommonModule, RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule, HighlightOnHoverDirective, PreparationTimePipe, DifficultyPipe, IngredientPipe],
+  imports: [RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule, HighlightOnHoverDirective, PreparationTimePipe, DifficultyPipe, IngredientPipe],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
