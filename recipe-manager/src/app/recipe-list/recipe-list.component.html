@@ -1,10 +1,12 @@
 <h2 class="header">Lista Przepisów</h2>
 <section>
   <ul>
-    <li *ngFor="let recipe of recipes"
-      [ngClass]="{'element-selected': selectedRecipeTitle === recipe.title}">
-      <app-recipe-list-element [recipe]="recipe"
+    @for (recipe of recipes; track recipe) {
+      <li
+        [ngClass]="{'element-selected': selectedRecipeTitle === recipe.title}">
+        <app-recipe-list-element [recipe]="recipe"
         (recipeSelected)="onRecipeClick($event)"></app-recipe-list-element>
-    </li>
+      </li>
+    }
   </ul>
 </section>

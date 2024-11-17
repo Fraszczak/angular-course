@@ -1,23 +1,27 @@
 <!-- ############ recipe-list-element.component.html - krok 4 ############ -->
 
-<article *ngIf="recipe" (click)="onRecipeClick(recipe)">
+@if (recipe) {
+<article (click)="onRecipeClick(recipe)">
     <h3>{{ recipe.title }}</h3>
     <p>{{ recipe.description }}</p>
     <p>Poziom trudności: {{ recipe.difficulty }}</p>
     <p>Czas przygotowania: {{ recipe.preparationTime }} minut</p>
 </article>
+}
 
 <!-- ############ ############ -->
 
 <!-- ############ recipe-list-element.component.html - krok 5 ############ -->
 
-<article *ngIf="recipe" (click)="onRecipeClick(recipe)">
+@if (recipe) {
+<article (click)="onRecipeClick(recipe)">
     <h3>{{ recipe.title }}</h3>
     <p>{{ recipe.description }}</p>
     <p>Poziom trudności: {{ recipe.difficulty }}</p>
     <p>Czas przygotowania: {{ recipe.preparationTime }} minut</p>
     <button (click)="onDeleteRecipe(recipe.id)">Usuń</button>
 </article>
+}
 
 <!-- ############ ############ -->
 
@@ -26,12 +30,14 @@
 <h2 class="header">Lista Przepisów</h2>
 <section>
     <ul>
-        <li *ngFor="let recipe of recipes"
+        @for (recipe of recipes; track recipe) {
+        <li
             [ngClass]="{'element-selected': selectedRecipeTitle === recipe.title}">
             <app-recipe-list-element [recipe]="recipe"
                 (recipeRemoved)="onDeleteRecipe($event)"
                 (recipeSelected)="onRecipeClick($event)"></app-recipe-list-element>
         </li>
+        }
     </ul>
 </section>
 

@@ -1,4 +1,6 @@
-<article *ngIf="recipe" (click)="onRecipeClick(recipe)">
+@if (recipe) {
+  <article (click)="onRecipeClick(recipe)">
     <h3>{{ recipe.title }}</h3>
     <p>{{ recipe.description }}</p>
-</article>
+  </article>
+}
