@@ -1,9 +1,9 @@
 ##### Moduł 1: Wprowadzenie do Angulara
 
 1. **Instalacja Angular CLI.**
-     * `npm install -g @angular/cli`
+     * `npm install -g @angular/cli@18`
 
-    **Wyjaśnienie:** Komenda npm install -g instaluje pakiet globalnie, co oznacza, że Angular CLI będzie dostępny z każdego katalogu na twoim komputerze. CLI to skrót od "Command Line Interface".
+    **Wyjaśnienie:** Komenda npm install -g instaluje pakiet globalnie, co oznacza, że Angular CLI będzie dostępny z każdego katalogu na twoim komputerze. CLI to skrót od "Command Line Interface". Na końcu dodaliśmy @18 by zainstalować dokładnie tę wersje.
 
     > Aby sprawdzić czy instalacja się powiodła, możesz wpisać **`ng version`**
     Jeśli zobaczysz wersję Angular CLI, oznacza to, że narzędzie zostało zainstalowane prawidłowo.
