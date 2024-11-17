@@ -1,4 +1,4 @@
-import { CommonModule, NgIf } from '@angular/common';
+
 import { Component, Input, OnInit } from '@angular/core';
 import { RecipeModel } from '../../core/recipe/model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-recipe-detail',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatCardModule, MatButtonModule],
+  imports: [RouterLink, MatCardModule, MatButtonModule],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.scss'
 })

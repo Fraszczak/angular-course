@@ -1,4 +1,4 @@
-import { CommonModule, NgFor } from '@angular/common';
+
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeListElementComponent } from '../recipe-list-element/recipe-list-element.component';
 import { RecipeService } from '../../core/recipe/service/recipe.service';
@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-recipe-list',
   standalone: true,
-  imports: [CommonModule, RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule],
+  imports: [RecipeListElementComponent, RouterLink, MatCardModule, MatButtonModule],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
