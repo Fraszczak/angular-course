@@ -125,15 +125,17 @@
             <mat-form-field class="form-control-full-width">
                 <mat-label>Tytuł przepisu</mat-label>
                 <input matInput type="text" formControlName="title" />
-                @if (recipeFormGroup.get('title')?.hasError('required'))
+                @if (recipeFormGroup.get('title')?.hasError('required')){
                 <mat-error>
                     Tytuł jest wymagany
                 </mat-error>
                 }
-                @if (recipeFormGroup.get('title')?.hasError('minlength'))
+                @if (recipeFormGroup.get('title')?.hasError('minlength')) {
                 <mat-error>
                     Tytuł musi mieć co najmniej 3 znaki
                 </mat-error>
+                }
+
             </mat-form-field>
         </div>
 
