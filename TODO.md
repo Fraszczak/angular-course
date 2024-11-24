@@ -30,7 +30,7 @@ Zbudujemy formularz umożliwiający dodawanie i edytowanie przepisów kulinarnyc
 
 3. Przejdzmy do komponentu głownego `app.component` i dodajmy nasz nowo utworzony komponent.
     * Zaimportujmy `RecipeTemplateFormComponent`
-    * przejdźmy do `recipe-template-form.component.html`, a następnie dodajmy poniższy kod
+    * przejdźmy do `app.component.html`, a następnie dodajmy poniższy kod
 
     > `<button (click)="recipeTemplateForm.toggleForm()">`
     > `{{ recipeTemplateForm.showForm ? 'Ukryj formularz' : 'Dodaj nowy przepis' }}`
@@ -44,7 +44,7 @@ Zbudujemy formularz umożliwiający dodawanie i edytowanie przepisów kulinarnyc
 
 4. Mamy już mechanikę ukrywania i odkrywania komponentu z formularzem którego użyjemy przy dodawaniu nowych przepisów.
 Teraz dodajmy formularz
-    * Do listy importów w `app-recipe-template-form.component.ts` dorzuć `FormModule`, to moduł który zawiera wszystkie podstawowe zasoby potrzebne do obsługi formularza opartego na szablonach.
+    * Do listy importów w `recipe-template-form.component.ts` dorzuć `FormModule`, to moduł który zawiera wszystkie podstawowe zasoby potrzebne do obsługi formularza opartego na szablonach.
     * W pliku `template-code.html` znajdziesz kod potrzebny do stworzenia widoku. Komentarze zawierają opis potrzebny do zrozumienia wykorzystanych mechanizmów. W razie niezrozumienia, śmiało pytaj :)
     * Gdy dodasz kod szablonu, kompilator poimformuje Cię o blądach, rozwiążesz je dodając logikę komponentu, znajdziesz ją w `component-code.ts` Komentarze zawierają wyjaśnienia użytych mechanizmów.
 

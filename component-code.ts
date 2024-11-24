@@ -67,7 +67,7 @@ export class RecipeTemplateFormComponent implements OnInit {
 // ############ recipe-template-form-component.ts - krok 4 ############
 
 // ...
-export class RecipeFormComponent implements OnInit {
+export class RecipeReactiveFormComponent implements OnInit {
   @Input() isEditMode = false;
   @Input() currentRecipe: RecipeModel | null = null;
 
