@@ -112,12 +112,12 @@ Zadanie do wykonania
     Po wykonaniu tego polecenia część plików została edytowana.
 
 2. Użycie komponentów UI pochodzących z biblioteki Angular Material
-   * Po instalacji zaszły pewne zmiany w projekcie, m.in dostaliśmy predefiniowany zestaw styli globalnych, przejdźmy teraz do pliku `global-styles.scss` i skopiujmy style i podmieńmy kod w pliku `styles.scss` na skopiowane wcześniej style.
+   * Po instalacji zaszły pewne zmiany w projekcie, m.in dostaliśmy predefiniowany zestaw styli globalnych, przejdźmy teraz do pliku `global-style.scss` i skopiujmy style i podmieńmy kod w pliku `styles.scss` na skopiowane wcześniej style.
 
    * Dodając bibliotekę zaznaczyliśmy że chcemy korzystać z animacji, a więc przejdźmy do ustawień głównych aplikacji `app.config.ts` i upewnijmy się że na liście provide jest `provideAnimationsAsync()`
 
    * Przejdźmy teraz do obecnie używanego komponentu dodawania i edytowania przepisów `app-recipe-reactive-form.component.ts` i dodajmy do listy importów `MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule`
-   * Gdy już importy mamy ograne, czas na edycje widoku. Przejdź do `template-code.html` znajdź tam część dotyczącą Angular Material, krok drugi i skopiuj kod a następnie podmień na ten znajdujący się w `app-recipe-reactive-form.component.ts`
+   * Gdy już importy mamy ograne, czas na edycje widoku. Przejdź do `template-code.html` znajdź tam część dotyczącą Angular Material, krok drugi i skopiuj kod a następnie podmień na ten znajdujący się w `app-recipe-reactive-form.component.html`
    * Dorzućmy style z `component.style.scss` do `app-recipe-reactive-form.component.scss` by trochę wyrównać nasze kontenery na kontrolki jak i sam formularz
 
 Zadanie do wykonania
