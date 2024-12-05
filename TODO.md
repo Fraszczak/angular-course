@@ -30,7 +30,7 @@ Zbudujemy formularz umożliwiający dodawanie i edytowanie przepisów kulinarnyc
 
 3. Przejdzmy do komponentu głownego `app.component` i dodajmy nasz nowo utworzony komponent.
     * Zaimportujmy `RecipeTemplateFormComponent`
-    * przejdźmy do `recipe-template-form.component.html`, a następnie dodajmy poniższy kod
+    * przejdźmy do `app.component.html`, a następnie dodajmy poniższy kod
 
     > `<button (click)="recipeTemplateForm.toggleForm()">`
     > `{{ recipeTemplateForm.showForm ? 'Ukryj formularz' : 'Dodaj nowy przepis' }}`
@@ -44,7 +44,7 @@ Zbudujemy formularz umożliwiający dodawanie i edytowanie przepisów kulinarnyc
 
 4. Mamy już mechanikę ukrywania i odkrywania komponentu z formularzem którego użyjemy przy dodawaniu nowych przepisów.
 Teraz dodajmy formularz
-    * Do listy importów w `app-recipe-template-form.component.ts` dorzuć `FormModule`, to moduł który zawiera wszystkie podstawowe zasoby potrzebne do obsługi formularza opartego na szablonach.
+    * Do listy importów w `recipe-template-form.component.ts` dorzuć `FormModule`, to moduł który zawiera wszystkie podstawowe zasoby potrzebne do obsługi formularza opartego na szablonach.
     * W pliku `template-code.html` znajdziesz kod potrzebny do stworzenia widoku. Komentarze zawierają opis potrzebny do zrozumienia wykorzystanych mechanizmów. W razie niezrozumienia, śmiało pytaj :)
     * Gdy dodasz kod szablonu, kompilator poimformuje Cię o blądach, rozwiążesz je dodając logikę komponentu, znajdziesz ją w `component-code.ts` Komentarze zawierają wyjaśnienia użytych mechanizmów.
 
@@ -112,12 +112,12 @@ Zadanie do wykonania
     Po wykonaniu tego polecenia część plików została edytowana.
 
 2. Użycie komponentów UI pochodzących z biblioteki Angular Material
-   * Po instalacji zaszły pewne zmiany w projekcie, m.in dostaliśmy predefiniowany zestaw styli globalnych, przejdźmy teraz do pliku `global-styles.scss` i skopiujmy style i podmieńmy kod w pliku `styles.scss` na skopiowane wcześniej style.
+   * Po instalacji zaszły pewne zmiany w projekcie, m.in dostaliśmy predefiniowany zestaw styli globalnych, przejdźmy teraz do pliku `global-style.scss` i skopiujmy style i podmieńmy kod w pliku `styles.scss` na skopiowane wcześniej style.
 
    * Dodając bibliotekę zaznaczyliśmy że chcemy korzystać z animacji, a więc przejdźmy do ustawień głównych aplikacji `app.config.ts` i upewnijmy się że na liście provide jest `provideAnimationsAsync()`
 
    * Przejdźmy teraz do obecnie używanego komponentu dodawania i edytowania przepisów `app-recipe-reactive-form.component.ts` i dodajmy do listy importów `MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule`
-   * Gdy już importy mamy ograne, czas na edycje widoku. Przejdź do `template-code.html` znajdź tam część dotyczącą Angular Material, krok drugi i skopiuj kod a następnie podmień na ten znajdujący się w `app-recipe-reactive-form.component.ts`
+   * Gdy już importy mamy ograne, czas na edycje widoku. Przejdź do `template-code.html` znajdź tam część dotyczącą Angular Material, krok drugi i skopiuj kod a następnie podmień na ten znajdujący się w `app-recipe-reactive-form.component.html`
    * Dorzućmy style z `component.style.scss` do `app-recipe-reactive-form.component.scss` by trochę wyrównać nasze kontenery na kontrolki jak i sam formularz
 
 Zadanie do wykonania
