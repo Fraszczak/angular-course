@@ -3,9 +3,6 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, OnInit, Output } from 
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RecipeListElementComponent } from '@ui/recipe-list-element';
-import { RecipeModel } from '@core/recipe/model';
-import { RecipeService } from '@core/recipe/service';
 import { tap } from 'rxjs';
 import { HighlightOnHoverDirective } from '@core/recipe/directives/highlight-on-hover.directive';
 import { DifficultyPipe } from '@core/recipe/pipes/difficulty.pipe';
@@ -14,6 +11,9 @@ import { PreparationTimePipe } from '@core/recipe/pipes/preparation-time.pipe';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RecipeListElementComponent } from '@ui/recipe-list-element/recipe-list-element.component';
+import { RecipeModel } from '@core/recipe/model/recipe.model';
+import { RecipeService } from '@core/recipe/service/recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -68,7 +68,7 @@ export class RecipeListComponent implements OnInit {
   filterRecipes(): void {
     // Filtrowanie według trudności
     let filteredByDifficulty = this.selectedDifficulty ? this.recipes.filter(recipe => recipe.difficulty === this.selectedDifficulty) : this.recipes;
-  
+
     // Dodatkowe filtrowanie według nazwy przepisu
     if (this.searchTerm) {
       this.filteredRecipes = filteredByDifficulty.filter(recipe => recipe.title.toLowerCase().includes(this.searchTerm.toLowerCase()));
