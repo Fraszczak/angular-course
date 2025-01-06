@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { EventRecipeModel } from '@core/recipe/model/event-recipe.model';
+import { RecipeModel } from '@core/recipe/model/recipe.model';
 @Component({
   selector: 'app-recipe-list-element',
   standalone: true,
