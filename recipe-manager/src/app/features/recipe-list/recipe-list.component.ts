@@ -3,14 +3,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RecipeListElementComponent } from '@ui/recipe-list-element';
-import { RecipeModel } from '@core/recipe/model';
-import { RecipeService } from '@core/recipe/service';
 import { tap } from 'rxjs';
 import { HighlightOnHoverDirective } from '@core/recipe/directives/highlight-on-hover.directive';
 import { DifficultyPipe } from '@core/recipe/pipes/difficulty.pipe';
 import { IngredientPipe } from '@core/recipe/pipes/ingredient.pipe';
 import { PreparationTimePipe } from '@core/recipe/pipes/preparation-time.pipe';
+import { RecipeModel } from '@core/recipe/model/recipe.model';
+import { RecipeService } from '@core/recipe/service/recipe.service';
+import { RecipeListElementComponent } from '@ui/recipe-list-element/recipe-list-element.component';
 
 @Component({
   selector: 'app-recipe-list',

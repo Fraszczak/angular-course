@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RecipeModel } from '@core/recipe/model';
-import { RecipeService } from '@core/recipe/service';
 import { PreparationTimePipe } from '@core/recipe/pipes/preparation-time.pipe';
 import { DifficultyPipe } from '@core/recipe/pipes/difficulty.pipe';
 import { IngredientPipe } from '@core/recipe/pipes/ingredient.pipe';
+import { RecipeModel } from '@core/recipe/model/recipe.model';
+import { RecipeService } from '@core/recipe/service/recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
