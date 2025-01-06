@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeListElementComponent } from '../recipe-list-element/recipe-list-element.component';
 import { RecipeService } from '../../core/recipe/service/recipe.service';
-import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
+import { EventRecipeModel } from '../../core/recipe/model/event-recipe.model';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
+
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,9 +13,9 @@ import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
-export class RecipeListComponent implements OnInit{
+export class RecipeListComponent implements OnInit {
   selectedRecipeTitle: string | null = '';
-  recipes: RecipeModel[]  = [];
+  recipes: RecipeModel[] = [];
 
   @Output() recipeSelected = new EventEmitter<RecipeModel | null>();
 
@@ -21,7 +23,7 @@ export class RecipeListComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.recipes =  this.recipeService.getRecipes();
+    this.recipes = this.recipeService.getRecipes();
   }
 
   onRecipeClick(listElement: EventRecipeModel | null) {
@@ -29,7 +31,6 @@ export class RecipeListComponent implements OnInit{
       this.selectedRecipeTitle = listElement.selectedRecipeTitle;
     }
     this.recipeSelected.emit(listElement);
-    
   }
 
   onDeleteRecipe(id: number): void {
