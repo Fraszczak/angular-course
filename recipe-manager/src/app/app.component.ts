@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RecipeDetailComponent } from './features/recipe-detail/recipe-detail.component';
+import { RecipeListComponent } from './features/recipe-list/recipe-list.component';
+import { RecipeTemplateFormComponent } from './features/recipe-template-form/recipe-template-form.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, MatButtonModule, MatProgressSpinnerModule],
+  imports: [RouterOutlet, RouterLink, RecipeListComponent, RecipeDetailComponent, RecipeTemplateFormComponent, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
