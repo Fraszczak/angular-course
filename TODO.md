@@ -5,7 +5,6 @@ _Serwisy w Angularze pozwalają oddzielić logikę biznesową od warstwy prezent
 
 1. Stwórzmy folder src/app/ui, a natępnie:
     * przenieśmy tam stworzone przez nas komponenty (recipe-detail, recipe-list, recipe-list-element) Poprawi to trochę naszą strukturę.
-    * do folderów z komponentami dorzuć plik `index.ts` w którym eksportujemy stworzone wcześniej komponenty. Analogicznie jak przy `/core/recipe`
     * upewnij się, że importy w całym projekcie są zgodne z nową strukturą.
   
 2. Przejdźmy od stworzenia/aktualizacji modelu danych `RecipeModel`
@@ -32,7 +31,6 @@ _Serwisy w Angularze pozwalają oddzielić logikę biznesową od warstwy prezent
     >src/app/core/recipe/services/recipe.service.ts
     >src/app/core/recipe/services/recipe.service.spec.ts (testy, na razie ich nie ruszamy).
 
-    * Dorzućmy index.ts do folderu ze stworzonym serwisem i go wyeksportujmy.
     * Na początek przenieśmy do serwisu `recipe-service.ts`  przepisy z komponentu `recipe-list`. Uzupełnijmy brakujące pola modelu wg uznania. (ingredients, preparationTime, difficulty)
     * Teraz dodajmy metodę `getRecipes(): RecipeModel[]` którą pobierzemy nasz przepisy w przyszłości.
     * Gdy metoda jest już gotowa, a przepisy są przeniesione do ciała serwisu, wstrzyknijmy serwis `RecipeService` do komponentu `RecipeListComponent` i sprawmy by nasza aplikacja zaczęła działać z wykorzystaniem serwisu.
@@ -47,7 +45,7 @@ _Serwisy w Angularze pozwalają oddzielić logikę biznesową od warstwy prezent
         > `}`
     * Cały kod znajdziesz w `component-code.ts`, jednak chciałbym żebyście najpierw spróbowali sami.
 
-    Akcja przypisania wartości do zmiennej recipe dzieje się w metodzie ngOnInit, bo to pierwszy moment w którym wszystko potrzebne jest gotowe, komponent jest wyrenderowany i mamy dostępn do jego zależności, serwis jest stworzony a jego instancja jest dostępna w scope komponentu.
+    Akcja przypisania wartości do zmiennej recipe dzieje się w metodzie ngOnInit, bo to bezpieczny moment w którym wszystko potrzebne jest gotowe, komponent jest wyrenderowany i mamy dostępn do jego zależności, serwis jest stworzony a jego instancja jest dostępna w scope komponentu.
     Jest to bardzo istotne, w momencie w którym przejdziemy do programowania reaktywnego, zrozumienie cyków życia jest niezbędne.
     Po wykonaniu wszystkich kroków aplikacja powinna wrócić do stanu sprzed dodania serwisu.
     Możesz mieć problem z importami, wyrównaj je.

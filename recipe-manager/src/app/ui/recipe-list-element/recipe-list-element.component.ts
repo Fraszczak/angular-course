@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EventRecipeModel } from '../../core/recipe/model/event-recipe.model';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
 
-import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
 
 @Component({
   selector: 'app-recipe-list-element',
@@ -15,7 +16,7 @@ export class RecipeListElementComponent {
   @Output() recipeRemoved = new EventEmitter<number>();
 
   onRecipeClick(recipe: RecipeModel) {
-    const toEmit: EventRecipeModel = { ...recipe, selectedRecipeTitle: recipe.title,  };
+    const toEmit: EventRecipeModel = { ...recipe, selectedRecipeTitle: recipe.title, };
     this.recipeSelected.emit(toEmit);
   }
 

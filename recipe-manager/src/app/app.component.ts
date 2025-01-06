@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RecipeListComponent } from './ui/recipe-list';
 import { RecipeDetailComponent } from './ui/recipe-detail/';
-import { RecipeModel } from './core/recipe/model';
+import { RecipeModel } from './core/recipe/model/recipe.model';
 
 @Component({
   selector: 'app-root',
