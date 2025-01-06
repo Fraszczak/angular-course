@@ -1,10 +1,10 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import { RecipeModel } from '../../core/recipe/model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { RecipeService } from '../../core/recipe/service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { RecipeService } from '../../core/recipe/service/recipe.service';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -19,7 +19,7 @@ export class RecipeDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

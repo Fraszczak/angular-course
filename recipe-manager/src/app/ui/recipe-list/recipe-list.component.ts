@@ -2,10 +2,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeListElementComponent } from '../recipe-list-element/recipe-list-element.component';
 import { RecipeService } from '../../core/recipe/service/recipe.service';
-import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
 
 @Component({
   selector: 'app-recipe-list',

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { RecipeDetailComponent } from './ui/recipe-detail';
-import { RecipeListComponent } from './ui/recipe-list';
-import { RecipeTemplateFormComponent } from './ui/recipe-template-form';
-import { RecipeReactiveFormComponent } from './ui/recipe-reactive-form';
+
 import { recipePageResolver } from './core/recipe/resolvers/recipe-page.resolver';
+import { RecipeDetailComponent } from './ui/recipe-detail/recipe-detail.component';
+import { RecipeListComponent } from './ui/recipe-list/recipe-list.component';
+import { RecipeReactiveFormComponent } from './ui/recipe-reactive-form/recipe-reactive-form.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full' }, // domyślna ścieżka, która przekierowuje na /recipes jeśli nie ma podanej innej ścieżki.
