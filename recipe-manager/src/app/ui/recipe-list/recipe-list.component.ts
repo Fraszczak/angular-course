@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RecipeListElementComponent } from '../recipe-list-element/recipe-list-element.component';
 import { RecipeService } from '../../core/recipe/service/recipe.service';
-import { EventRecipeModel, RecipeModel } from '../../core/recipe/model';
+import { EventRecipeModel } from '../../core/recipe/model/event-recipe.model';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
 
 @Component({
   selector: 'app-recipe-list',

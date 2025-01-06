@@ -1,12 +1,12 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RecipeModel } from '../../core/recipe/model';
-import { RecipeService } from '../../core/recipe/service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { RecipeModel } from '../../core/recipe/model/recipe.model';
+import { RecipeService } from '../../core/recipe/service/recipe.service';
 
 @Component({
   selector: 'app-recipe-template-form',
