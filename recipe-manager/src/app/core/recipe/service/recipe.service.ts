@@ -41,7 +41,7 @@ export class RecipeService {
     'Corn', 'Chili powder'
   ];
 
-  constructor() {}
+  constructor() { }
 
   // Metoda pobierająca wszystkie przepisy
   getRecipes(): RecipeModel[] {
@@ -67,8 +67,8 @@ export class RecipeService {
     }
   }
 
-   // Metoda pobierająca wszystkie popularne składniki
-   getPopularIngredients(): string[] {
+  // Metoda pobierająca wszystkie popularne składniki
+  getPopularIngredients(): string[] {
     return this.popularIngredients;
   }
 }

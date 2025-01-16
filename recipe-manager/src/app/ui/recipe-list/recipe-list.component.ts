@@ -12,9 +12,9 @@ import { RecipeModel } from '../../core/recipe/model/recipe.model';
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
-export class RecipeListComponent implements OnInit{
+export class RecipeListComponent implements OnInit {
   selectedRecipeTitle: string | null = '';
-  recipes: RecipeModel[]  = [];
+  recipes: RecipeModel[] = [];
 
   @Output() recipeSelected = new EventEmitter<RecipeModel | null>();
 
@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.recipes =  this.recipeService.getRecipes();
+    this.recipes = this.recipeService.getRecipes();
   }
 
   onRecipeClick(listElement: EventRecipeModel | null) {
@@ -30,7 +30,6 @@ export class RecipeListComponent implements OnInit{
       this.selectedRecipeTitle = listElement.selectedRecipeTitle;
     }
     this.recipeSelected.emit(listElement);
-    
   }
 
   onDeleteRecipe(id: number): void {

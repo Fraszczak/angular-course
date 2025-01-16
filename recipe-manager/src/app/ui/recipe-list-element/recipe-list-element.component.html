@@ -1,12 +1,12 @@
 @if (recipe) {
-  <article>
-    <div (click)="onRecipeClick(recipe)">
-      <h3>{{ recipe.title }}</h3>
-      <p>{{ recipe.description }}</p>
-      <p>Poziom trudności: {{ recipe.difficulty }}</p>
-      <p>Czas przygotowania: {{ recipe.preparationTime }} minut</p>
-    </div>
-    <button mat-fab
-      (click)="onDeleteRecipe(recipe)"><mat-icon>delete</mat-icon></button>
-    </article>
-  }
+<article>
+  <div (click)="onRecipeClick(recipe)">
+    <h3>{{ recipe.title }}</h3>
+    <p>{{ recipe.description }}</p>
+    <p>Poziom trudności: {{ recipe.difficulty }}</p>
+    <p>Czas przygotowania: {{ recipe.preparationTime }} minut</p>
+  </div>
+  <button mat-fab
+    (click)="onDeleteRecipe(recipe)"><mat-icon>delete</mat-icon></button>
+</article>
+}
